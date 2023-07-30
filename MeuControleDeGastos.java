@@ -2,56 +2,62 @@ import java.util.Scanner;
 
 public class MeuControleDeGastos {
     public static void main(String[] args) {
-        Scanner leitura = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        //Pergunta nome
-        System.out.println("""
-        Olá, seja bem vindo!
-        Digite o seu nome para inicializarmos um cadastro.
-        """);
-        String nome = leitura.nextLine();
+        System.out.println("Olá, seja bem vindo!\nDigite o seu nome para inicializarmos um cadastro.\n");
+        String nome = scanner.nextLine();
 
-        //Definição se é conta corrente ou não adiciono nada
-        String tipoDeConta = "0";
-        System.out.println("""
-        Deseja adicionar o tipo de conta?
-        Se sim, digite 1, se não, digite 2.
-        """);
-        String adicionarContaOuNao = leitura.nextLine();
+        System.out.println("Digite o seu saldo. ");
+        int saldo = scanner.nextInt();
 
+        String menu;
+        menu = """
+                ****************************************
+                Dados iniciais do cliente:
+                Nome:          %s
+                Tipo conta:    Corrente
+                Saldo inicial: R$ %d
+                ****************************************
+                """.formatted(nome, saldo);
 
-        if (adicionarContaOuNao.equals("1")) {
-            System.out.println("Digite 1 para 'Conta Corrente' ou 2 para 'Conta Investimento'.");
-            String correnteOuInvestimento = leitura.nextLine();
-            if (correnteOuInvestimento.equals("1")) {
-                tipoDeConta = "Conta Corrente";
+        String opcoes = """
+                Operações
+                                
+                1- Consultar saldos
+                2- Receber valor
+                3- Transferir valor
+                4- Sair
+                                
+                Digite a opção desejada:""";
+        System.out.println(menu+opcoes);
+        int interruptor = 1;
+        int numeroDaOpcao = 0;
+
+        while (interruptor == 1 || numeroDaOpcao != 4) {
+            numeroDaOpcao = scanner.nextInt();
+
+            if (numeroDaOpcao == 1) {
+                System.out.println("Seu saldo atual é: R$ " + saldo);
+            }else if (numeroDaOpcao == 2) {
+                System.out.println("Informe o valor a receber: ");
+                int saldoAserSomado = scanner.nextInt();
+                saldo += saldoAserSomado;
+                System.out.println("Saldo atualizado: " + saldo);
+            }else if (numeroDaOpcao == 3) {
+                System.out.println("Informe o valor a ser transferido: ");
+                int saldoAserAbatido = scanner.nextInt();
+                if (saldoAserAbatido > saldo) {
+                    System.out.println("Seu saldo é insuficiente, por favor, insira um valor compatível com o seu salto atual que é de: R$ " + saldo);
+                } if (saldoAserAbatido <= saldo) {
+                    saldo -= saldoAserAbatido;
+                    System.out.println("Saldo atualizado: " + saldo);}
+            }else if (numeroDaOpcao == 4) {
+                break;
+            } else {
+                System.out.println("Opção inválida. Por favor, digite uma das opções abaixo.");
             }
-            if (correnteOuInvestimento.equals("2")) {
-                tipoDeConta = "Conta Investimento";
-            }
+
+            System.out.println(opcoes);
         }
-
-        System.out.println("Nome: " + nome + "\nTipo de conta: " + tipoDeConta);
-
-
     }
 }
-
-/*
-* ***********************
-Dados iniciais do cliente:
-
-Nome: Jacqueline Oliveira
-Tipo conta: Corrente
-Saldo inicial: R$ 2500,00
-***********************
-
-Operações
-
-1- Consultar saldos
-2- Receber valor
-3- Transferir valor
-4- Sair
-
-Digite a opção desejada:
-* */

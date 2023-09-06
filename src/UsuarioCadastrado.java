@@ -1,24 +1,38 @@
+package src;
 import java.util.Scanner;
 
-public class MeuControleDeGastos {
+public class UsuarioCadastrado {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Olá, seja bem vindo!\nDigite o seu nome para inicializarmos um cadastro.\n");
+        Cliente novoCliente = new Cliente();
+        
+        //O cpf e a senha no momento são só para enfeite. Procurar futuramente o método equals.
+        System.out.println("Olá, seja bem vindo ao banco digital TechFinance!\nDigite os seus dados para fazermos o cadastro.\n");
+        
+        //Definindo nome
+        System.out.println("Nome: ");
         String nome = scanner.nextLine();
+        novoCliente.setNome(nome);
 
-        System.out.println("Digite o seu saldo. ");
-        int saldo = scanner.nextInt();
+        //Definindo cpf
+        System.out.println("CPF: ");
+        String cpf = scanner.nextLine();
+        novoCliente.setcpf(cpf);
 
-        String menu;
-        menu = """
-                ****************************************
-                Dados iniciais do cliente:
-                Nome:          %s
-                Tipo conta:    Corrente
-                Saldo inicial: R$ %d
-                ****************************************
-                """.formatted(nome, saldo);
+        //Falta acrescentar getters e setters dos outros dados para o cadastro
+        
+        //O saldo inicial começará com 0 pois o cliente estaria abrindo a conta dele 
+        
+        double saldo = 0; 
+        novoCliente.setSaldo(saldo);
+        
+        String menu = """
+            ****************************************
+            Seja bem vindo Sr. %s
+            Tipo conta:    Corrente
+            Saldo:         R$ %.2f
+            ****************************************
+            """.formatted(novoCliente.getNome(), novoCliente.getSaldo());
 
         String opcoes = """
                 Operações
@@ -29,7 +43,9 @@ public class MeuControleDeGastos {
                 4- Sair
                                 
                 Digite a opção desejada:""";
+
         System.out.println(menu+opcoes);
+
         int interruptor = 1;
         int numeroDaOpcao = 0;
 
@@ -37,12 +53,12 @@ public class MeuControleDeGastos {
             numeroDaOpcao = scanner.nextInt();
 
             if (numeroDaOpcao == 1) {
-                System.out.println("Seu saldo atual é: R$ " + saldo);
+                novoCliente.getSaldoMensagem();
             }else if (numeroDaOpcao == 2) {
                 System.out.println("Informe o valor a receber: ");
                 int saldoAserSomado = scanner.nextInt();
                 saldo += saldoAserSomado;
-                System.out.println("Saldo atualizado: " + saldo);
+                novoCliente.getSaldoMensagem();
             }else if (numeroDaOpcao == 3) {
                 System.out.println("Informe o valor a ser transferido: ");
                 int saldoAserAbatido = scanner.nextInt();
@@ -50,7 +66,7 @@ public class MeuControleDeGastos {
                     System.out.println("Seu saldo é insuficiente, por favor, insira um valor compatível com o seu salto atual que é de: R$ " + saldo);
                 } if (saldoAserAbatido <= saldo) {
                     saldo -= saldoAserAbatido;
-                    System.out.println("Saldo atualizado: " + saldo);}
+                    novoCliente.getSaldoMensagem();}
             }else if (numeroDaOpcao == 4) {
                 break;
             } else {

@@ -1,10 +1,13 @@
 package src;
+
 import java.util.Scanner;
 
-public class UsuarioCadastrado {
+import src.br.com.techfinance.clientes.ClientePF;
+
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Cliente novoCliente = new Cliente();
+        ClientePF novoCliente = new ClientePF();
         
         //O cpf e a senha no momento são só para enfeite. Procurar futuramente o método equals.
         System.out.println("Olá, seja bem vindo ao banco digital TechFinance!\nDigite os seus dados para fazermos o cadastro.\n");

@@ -1,8 +1,7 @@
-package src;
+package src.br.com.techfinance.interfacedeentrada;
 import java.util.Scanner;
 
 //inicialmente pensei em criar duas áreas de acesso, uma para um usuário existente e outra para um usuário sme cadastro.
-//Porém, em função da urgência do projeto, terei que postergar o desenvolvimento desse arquivo java.
 
 /*public class UsuarioSemCadastro {
     public static void main(String[] args) {

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import src.br.com.techfinance.contas.ContaCorrente;
 import src.br.com.techfinance.contas.ContaInvestimento;
 
-//Acrescentei a pasta usuarios pois futuramente posso acrescentar tipos diferentes de clientes com base na renda deles.
+//futuramente posso acrescentar tipos diferentes de clientes com base na renda deles.
 //Falta acrescentar getters e setters dos outros dados para o cadastro
 
 public class ClientePF extends Cliente {

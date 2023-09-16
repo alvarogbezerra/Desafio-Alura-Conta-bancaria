@@ -18,17 +18,17 @@ public class Endereco {
     }
 
     // Getters e Setters
-    // ...
-
+    
+    /* 
     @Override
     public String toString() {
         return "Endereco{" +
-                "rua='" + rua + '\'' +
-                ", numero='" + numero + '\'' +
-                ", bairro='" + bairro + '\'' +
-                ", cidade='" + cidade + '\'' +
-                ", estado='" + estado + '\'' +
-                ", cep='" + cep + '\'' +
-                '}';
-    }
+        "rua='" + rua + '\'' +
+        ", numero='" + numero + '\'' +
+        ", bairro='" + bairro + '\'' +
+        ", cidade='" + cidade + '\'' +
+        ", estado='" + estado + '\'' +
+        ", cep='" + cep + '\'' +
+        '}';
+    }*/
 }
